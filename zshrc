@@ -44,6 +44,7 @@ setopt HIST_FIND_NO_DUPS
 fignore=(.o)
 
 alias grep='grep --color=auto'
+alias ls='ls --color=auto'
 export GREP_COLOR=31
 
 # Lang settings
