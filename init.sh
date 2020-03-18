@@ -12,7 +12,7 @@ git clone https://github.com/damjanek/dotfiles.git ~/.dotfiles
 rm -rf ~/.vim*
 # installing
 git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized/
-ln -sf ~/.dotfiles/pathogen.vim  ~/.vim/autoload/pathogen.vim
+ln -sf ~/.dotfiles/vim ~/.vim
 ln -sf ~/.dotfiles/vimrc ~/.vimrc
 
 ## .gitignore
