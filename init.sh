@@ -5,14 +5,13 @@ rm -rf ~/.bash* ~/.profile
 rm -rf ~/.dotfiles
 
 # repo
-git clone https://github.com/damjanek/dotfiles.git ~/.dotfiles
+git clone --recurse-submodules https://github.com/damjanek/dotfiles.git ~/.dotfiles
 
 ## vim
 # cleaning
 rm -rf ~/.vim*
 # installing
 ln -sf ~/.dotfiles/vim ~/.vim
-git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized/
 ln -sf ~/.dotfiles/vimrc ~/.vimrc
 
 ## .gitignore
