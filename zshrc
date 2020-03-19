@@ -22,8 +22,10 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 zstyle ':completion::complete:*' use-cache 1
 if [[ $(uname) == 'Linux' ]]; then
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+  alias ls='ls --color=auto'
 else
   zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
+  alias ls='ls -G'
 fi
 zstyle ':completion:*' menu select
 
@@ -44,7 +46,6 @@ setopt HIST_FIND_NO_DUPS
 fignore=(.o)
 
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
 export GREP_COLOR=31
 
 # Lang settings

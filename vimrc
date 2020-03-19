@@ -1,4 +1,4 @@
-" set term=ansi
+set term=xterm-256color
 set t_Co=256
 filetype plugin on " Enable filetype plugins
 filetype indent on " Enable filetype plugins
@@ -28,7 +28,6 @@ set expandtab
 set smarttab
 set shiftwidth=2
 set softtabstop=2
-set pastetoggle=<F2>
 
 set laststatus=2
 set tabstop=2
@@ -36,13 +35,14 @@ set bg=dark
 set bs=2
 set smartindent 
 set autoindent
+set matchpairs+=(:),{:},[:],<:>,':',":"
+
 
 execute pathogen#infect()
 
 colorscheme solarized
 
 highlight Comment ctermfg=lightblue
-hi BadWhitespace ctermbg=lightblue guibg=lightblue
 
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
