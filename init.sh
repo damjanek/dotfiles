@@ -30,5 +30,4 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/plugin
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/themes/powerlevel10k
 # install
 ln -sf ~/.dotfiles/zshrc ~/.zshrc
-ln -sf ~/.dotfiles/p10k.zsh ~/.p10k.zsh
 touch ~/.zshrc.local

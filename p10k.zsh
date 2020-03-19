@@ -100,7 +100,7 @@
   # Context format when root: user@host. The first part white, the rest grey.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE="%F{$white}%n%f%F{$grey}@%m%f"
   # Context format when not root: user@host. The whole thing grey.
-  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%n@%m%f"
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$magenta}%n@%F{$red}%m%f"
   # Don't show context unless root or in SSH.
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_CONTENT_EXPANSION=
 
@@ -161,7 +161,7 @@
   #   - always:   Trim down prompt when accepting a command line.
   #   - same-dir: Trim down prompt when accepting a command line unless this is the first command
   #               typed after changing current working directory.
-  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
 
   # Instant prompt mode.
   #
