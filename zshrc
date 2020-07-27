@@ -46,6 +46,9 @@ setopt HIST_FIND_NO_DUPS
 # Ignore extensions when completing
 fignore=(.o)
 
+if [[ $(uname) == 'SunOS' ]]; then
+  alias grep='ggrep'
+fi
 alias grep='grep --color=auto'
 export GREP_COLOR=31
 
