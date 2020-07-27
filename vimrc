@@ -35,11 +35,87 @@ set bg=dark
 set bs=2
 set smartindent 
 set autoindent
+set colorcolumn=120
 set matchpairs+=(:),{:},[:],<:>,':',":"
+cabbrev h vert h
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
 
 
-execute pathogen#infect()
+call plug#begin()
+Plug 'patricka3125/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fcevado/molokai_dark'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+Plug 'altercation/vim-colors-solarized'
+call plug#end()
 
+" LSP settings
+inoremap <expr> <C-y> pumvisible() ? asyncomplete#close_popup() : "\<C-y>"
+inoremap <expr> <CR>  pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+if executable('gopls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '--remote=auto']},
+        \ 'whitelist': ['go'],
+        \ })
+endif
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gr <plug>(lsp-rename)
+    " refer to doc to add more commands
+endfunction
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+set completeopt+=preview
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+let g:lsp_highlights_enabled = 0
+let g:lsp_textprop_enabled = 0
+
+
+
+" Snippets
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+
+" Vim go settings
+let g:go_highlight_types=1
+let g:go_highlight_functions=1
+let g:go_fmt_command="goimports"
+let g:go_def_mapping_enabled=0
+let g:go_gopls_options = ['--remote=auto']
+call SetupCommandAlias("alt", "GoAlternate")
+call SetupCommandAlias("imp", "GoImports")
+call SetupCommandAlias("lint", "GoMetaLinter")
+call SetupCommandAlias("build", "GoBuild")
+call SetupCommandAlias("cover", "GoCoverage")
+call SetupCommandAlias("clear", "GoCoverageClear")
+call SetupCommandAlias("err", "GoIfErr")
+call SetupCommandAlias("def", "GoDef")
+
+
+"execute pathogen#infect()
+
+set background=dark
 colorscheme solarized
 
 highlight Comment ctermfg=lightblue
@@ -72,3 +148,4 @@ augroup JumpCursorOnEdit
  \ endif
 augroup END
 
+au BufNewFile,BufRead Jenkinsfile setf groovy

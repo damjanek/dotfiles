@@ -58,5 +58,6 @@ if  [[ $? == 0 ]]; then
 fi
 
 export GOPATH=$HOME/go
+export GOPRIVATE="github.com/damjanek"
 
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local

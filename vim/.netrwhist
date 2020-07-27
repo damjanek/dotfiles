@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/dszeluga/repos/optidash/puppet/site/profile/files/loadbalancer/nginx'
+let g:netrw_dirhist_3='/private/var/tmp/_bazel_dszeluga/install/8ee987d32e94b9a7b51ef6034faefef4/embedded_tools/tools/bash'
+let g:netrw_dirhist_2='/Users/dszeluga/repos/pixaven/puppet/site/profile/manifests'
+let g:netrw_dirhist_1='/Users/dszeluga/repos/juniper/jenkins-jobs/rpm/appformix'

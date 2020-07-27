@@ -51,6 +51,6 @@
   tool = vimdiff
   #colorMoved = zebra
 [credential]
-  helper = store
+	helper = store
 [include]
   path = .gitconfig.local
