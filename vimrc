@@ -37,6 +37,7 @@ set smartindent
 set autoindent
 set colorcolumn=120
 set matchpairs+=(:),{:},[:],<:>,':',":"
+set re=0
 cabbrev h vert h
 fun! SetupCommandAlias(from, to)
   exec 'cnoreabbrev <expr> '.a:from
@@ -61,6 +62,7 @@ Plug 'honza/vim-snippets'
 Plug 'thomasfaingnaert/vim-lsp-snippets'
 Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 Plug 'altercation/vim-colors-solarized'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " LSP settings
@@ -112,9 +114,6 @@ call SetupCommandAlias("clear", "GoCoverageClear")
 call SetupCommandAlias("err", "GoIfErr")
 call SetupCommandAlias("def", "GoDef")
 
-
-"execute pathogen#infect()
-
 set background=dark
 colorscheme solarized
 
@@ -149,3 +148,10 @@ augroup JumpCursorOnEdit
 augroup END
 
 au BufNewFile,BufRead Jenkinsfile setf groovy
+"" Show unwanted whitespaces
+highlight ExtraWhitespace ctermbg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
