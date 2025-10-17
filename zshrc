@@ -1,6 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+eval "$(ssh-agent)"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -13,6 +14,7 @@ autoload -U edit-command-line
 export CLICOLOR=1
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
+source <(/opt/homebrew/bin/kubectl completion zsh)
 [[ ! -f ~/.dotfiles/p10k.zsh ]] || source ~/.dotfiles/p10k.zsh
 
 bindkey -e
@@ -64,3 +66,10 @@ export GOPATH=$HOME/go
 export GOPRIVATE="github.com/damjanek"
 
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+alias cn2scons="pipenv run scons -j$(sysctl -n hw.ncpu)"
+export PATH=/Users/dszeluga/.local/bin:${PATH}
+export PATH=$HOME/go/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
