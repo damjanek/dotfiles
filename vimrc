@@ -56,7 +56,6 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'thomasfaingnaert/vim-lsp-snippets'
 Plug 'thomasfaingnaert/vim-lsp-ultisnips'
@@ -114,7 +113,7 @@ call SetupCommandAlias("err", "GoIfErr")
 call SetupCommandAlias("def", "GoDef")
 
 set background=dark
-colorscheme solarized
+silent! colorscheme solarized
 
 highlight Comment ctermfg=lightblue
 
