@@ -47,7 +47,6 @@ endfun
 
 
 call plug#begin()
-Plug 'patricka3125/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fcevado/molokai_dark'
 Plug 'vim-airline/vim-airline'

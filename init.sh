@@ -31,3 +31,5 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/themes/p
 # install
 ln -sf ~/.dotfiles/zshrc ~/.zshrc
 touch ~/.zshrc.local
+
+vim +'PlugInstall --sync' +qa
