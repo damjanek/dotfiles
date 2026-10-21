@@ -55,7 +55,7 @@ alias grep='grep --color=auto'
 export GREP_COLORS='mt=31'
 
 # Lang settings
-_locale=$(locale -a | grep -i en.us.utf 2>/dev/null)
+_locale=$(locale -a 2>/dev/null | grep -i en.us.utf)
 if  [[ $? == 0 ]]; then
   export LC_ALL=${_locale}
   export LANG=${_locale}
