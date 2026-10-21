@@ -14,7 +14,7 @@ autoload -U edit-command-line
 export CLICOLOR=1
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
-source <(/kubectl completion zsh)
+source <(kubectl completion zsh)
 [[ ! -f ~/.dotfiles/p10k.zsh ]] || source ~/.dotfiles/p10k.zsh
 
 bindkey -e
@@ -52,10 +52,10 @@ if [[ $(uname) == 'SunOS' ]]; then
   alias grep='ggrep'
 fi
 alias grep='grep --color=auto'
-export GREP_COLOR=31
+export GREP_COLORS='mt=31'
 
 # Lang settings
-_locale=$(locale -a | grep -i en.us.utf)
+_locale=$(locale -a | grep -i en.us.utf 2>/dev/null)
 if  [[ $? == 0 ]]; then
   export LC_ALL=${_locale}
   export LANG=${_locale}
@@ -68,6 +68,5 @@ export GOPATH=$HOME/go
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH=/Users/dszeluga/.local/bin:${PATH}
+export PATH=~/.local/bin:${PATH}
 export PATH=$HOME/go/bin:$PATH
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
