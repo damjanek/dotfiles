@@ -7,7 +7,6 @@ ln -sf ~/dotfiles/vimrc ~/.vimrc
 
 # installing
 ln -sf ~/dotfiles/gitignore ~/.gitignore
-ln -sf ~/dotfiles/gitconfig ~/.gitconfig
 
 ## zsh
 # cleaning
